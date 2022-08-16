@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,6 +6,11 @@
     <RootNamespace>LDT_Tools</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <EnablePreviewFeatures>true</EnablePreviewFeatures>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Sharprompt" Version="2.4.3" />
+  </ItemGroup>
 
 </Project>
