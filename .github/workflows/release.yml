@@ -1,0 +1,42 @@
+name: Release
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    name: Release
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: GetReleaseVersion
+      shell: pwsh
+      run: |
+        ./Get-Version.ps1
+    - name: Build
+      shell: pwsh
+      run: |
+        dotnet publish -c Release -r win-x64 -o ./publish/win-x64-independent --self-contained true
+        dotnet publish -c Release -r win-x86 -o ./publish/win-x86-independent --self-contained true
+        dotnet publish -c Release -r win-x64 -o ./publish/win-x64-dependent --self-contained false
+        dotnet publish -c Release -r win-x86 -o ./publish/win-x86-dependent --self-contained false
+    - name: PackToZip
+      shell: pwsh
+      run: |
+        mkdir ./publish/zips
+        Compress-Archive -Path ./publish/win-x64-independent -DestinationPath ./publish/zips/LDT-Tools-${{ env.ReleaseVersion }}-win-x64-independent.zip
+        Compress-Archive -Path ./publish/win-x86-independent -DestinationPath ./publish/zips/LDT-Tools-${{ env.ReleaseVersion }}-win-x86-independent.zip
+        Compress-Archive -Path ./publish/win-x64-dependent -DestinationPath ./publish/zips/LDT-Tools-${{ env.ReleaseVersion }}-win-x64-dependent.zip
+        Compress-Archive -Path ./publish/win-x86-dependent -DestinationPath ./publish/zips/LDT-Tools-${{ env.ReleaseVersion }}-win-x86-dependent.zip
+    - name: Create GitHub release
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: "${{ secrets.GH_TOKEN }}"
+        files: |
+          ./publish/zips/*
+        automatic_release_tag: ${{ env.ReleaseVersion }}
+        title: ${{ env.ReleaseVersion }}
+        prerelease: true
