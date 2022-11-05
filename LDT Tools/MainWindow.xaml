@@ -1,0 +1,40 @@
+﻿<Window x:Class="LDT_Tools.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LDT_Tools"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Background="Transparent"
+        WindowStyle="None"
+        AllowsTransparency="True">
+    <Border x:Name="MainBorder" Background="{ui:ThemeResource ResourceKey=ApplicationBackgroundBrush}" CornerRadius="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ui:TitleBar Grid.Row="0" Title="LDT Tools" MouseMove="TitleBar_MouseMove"></ui:TitleBar>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ui:NavigationCompact Grid.Column="0" x:Name="RootNavigation" Frame="{Binding ElementName=RootFrame}" SelectedPageIndex="0">
+                    <ui:NavigationCompact.Items>
+                        <ui:NavigationItem Content="主页" Icon="Home24" PageType="{x:Type local:HomePage}" Cursor="Hand" />
+                        <ui:NavigationItem Content="图片转文字" Icon="Translate24" PageType="{x:Type local:TranslatePage}" Cursor="Hand" />
+                    </ui:NavigationCompact.Items>
+                    <ui:NavigationCompact.Footer>
+                        <ui:NavigationItem Content="设置" Icon="Settings24" PageType="{x:Type local:SettingsPage}" Cursor="Hand" />
+                        <!--  A navigation element that does not point to the page can be used as a button.  -->
+                        <ui:NavigationItem Click="NavigationButtonTheme_OnClick" Content="更改主题" Icon="DarkTheme24" />
+                    </ui:NavigationCompact.Footer>
+                </ui:NavigationCompact>
+                <Frame x:Name="RootFrame" Grid.Column="1" Margin="0,0,6,6"></Frame>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
