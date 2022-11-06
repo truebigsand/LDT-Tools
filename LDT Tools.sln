@@ -3,18 +3,44 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDT Tools", "LDT Tools\LDT Tools.csproj", "{93B49947-9E97-4E3D-9FDE-2205CCE3EFAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LDT Tools", "..\..\..\Downloads\LDT-Tools-master (1)\LDT-Tools-master\LDT Tools\LDT Tools.csproj", "{EAEA9DB7-1358-46CC-BD31-09881915E995}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComeCapture", "..\..\..\Downloads\ComeCapture-master\ComeCapture-master\ComeCapture\ComeCapture.csproj", "{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{93B49947-9E97-4E3D-9FDE-2205CCE3EFAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93B49947-9E97-4E3D-9FDE-2205CCE3EFAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93B49947-9E97-4E3D-9FDE-2205CCE3EFAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93B49947-9E97-4E3D-9FDE-2205CCE3EFAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Debug|x64.Build.0 = Debug|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Debug|x86.Build.0 = Debug|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Release|x64.ActiveCfg = Release|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Release|x64.Build.0 = Release|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Release|x86.ActiveCfg = Release|Any CPU
+		{EAEA9DB7-1358-46CC-BD31-09881915E995}.Release|x86.Build.0 = Release|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Debug|x64.Build.0 = Debug|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Debug|x86.Build.0 = Debug|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Release|x64.ActiveCfg = Release|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Release|x64.Build.0 = Release|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Release|x86.ActiveCfg = Release|Any CPU
+		{E1DF0DCA-D261-4F81-9F64-389B3CFCAE2F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
