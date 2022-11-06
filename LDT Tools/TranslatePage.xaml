@@ -1,0 +1,25 @@
+﻿<Page x:Class="LDT_Tools.TranslatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LDT_Tools"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HomePage">
+    <Border CornerRadius="15" Background="{ui:ThemeResource ResourceKey=LayerFillColorDefaultBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Width="260" Height="340" x:Name="PreviewImage"></Image>
+            <StackPanel Grid.Column="1">
+                <Button Margin="10" HorizontalAlignment="Center" x:Name="ChooseImageButton" Content="选择图片" Click="ChooseImageButton_Click"></Button>
+                <TextBlock Foreground="{ui:ThemeResource ResourceKey=TextFillColorPrimaryBrush}" x:Name="TimeTextBlock" Text="用时：" HorizontalAlignment="Center"></TextBlock>
+                <TextBox x:Name="TranslateResultTextBox" Margin="5" IsReadOnly="True" Cursor="IBeam"></TextBox>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Page>
