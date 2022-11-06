@@ -16,10 +16,14 @@
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0" Width="260" Height="340" x:Name="PreviewImage"></Image>
             <StackPanel Grid.Column="1">
-                <Button Margin="10" HorizontalAlignment="Center" x:Name="ChooseImageButton" Content="选择图片" Click="ChooseImageButton_Click"></Button>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button Margin="10" x:Name="ScreenshotButton" Content="截图" Click="ScreenshotButton_Click"></Button>
+                    <Button Margin="10" x:Name="ChooseImageButton" Content="选择图片" Click="ChooseImageButton_Click"></Button>
+                </StackPanel>
                 <TextBlock Foreground="{ui:ThemeResource ResourceKey=TextFillColorPrimaryBrush}" x:Name="TimeTextBlock" Text="用时：" HorizontalAlignment="Center"></TextBlock>
                 <TextBox x:Name="TranslateResultTextBox" Margin="5" IsReadOnly="True" Cursor="IBeam"></TextBox>
             </StackPanel>
+            <ui:Button Grid.Column="1" Content="Button" Margin="733,148,0,0" VerticalAlignment="Top" Width="0"/>
         </Grid>
     </Border>
 </Page>
