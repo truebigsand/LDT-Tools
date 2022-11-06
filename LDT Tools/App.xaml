@@ -10,11 +10,6 @@
                 <ui:ThemesDictionary Theme="Dark" />
                 <ui:ControlsDictionary />
             </ResourceDictionary.MergedDictionaries>
-
-            <Style x:Key="RectangleStyle" TargetType="{x:Type Rectangle}">
-                <Setter Property="Fill" Value="Black"/>
-                <Setter Property="Opacity" Value=".5"/>
-            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
