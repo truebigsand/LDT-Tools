@@ -31,6 +31,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
     <PackageReference Include="WPF-UI" Version="2.0.3" />
+    <PackageReference Include="YY.Screenshot" Version="1.0.3" />
   </ItemGroup>
 
   <ItemGroup>
