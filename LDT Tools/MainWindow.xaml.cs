@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LDT_Tools.Utility;
 
 namespace LDT_Tools
 {
@@ -23,7 +24,11 @@ namespace LDT_Tools
         public MainWindow()
         {
             InitializeComponent();
-            (App.Current.MainWindow as MainWindow).MainBorder.CornerRadius = new CornerRadius(App.GlobalSettings.IsRoundCornerEnabled ? 15 : 0);
+            if(App.Current.MainWindow is not MainWindow mainWindow)
+            {
+                throw new DevelopmentException("mainWindow is null");
+            }
+            mainWindow.MainBorder.CornerRadius = new CornerRadius(App.GlobalSettings.IsRoundCornerEnabled ? 15 : 0);
             Wpf.Ui.Appearance.Background.Apply(this, App.GlobalSettings.BackgroundType);
             Wpf.Ui.Appearance.Theme.Apply(
                 App.GlobalSettings.ThemeType,

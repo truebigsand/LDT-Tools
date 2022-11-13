@@ -9,7 +9,6 @@ using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
-using static LDT_Tools.Utility;
 using System.Windows.Navigation;
 
 namespace LDT_Tools
@@ -38,7 +37,7 @@ namespace LDT_Tools
                 {
                     settings = JsonConvert.DeserializeObject<_GlobalSettings>(File.ReadAllText("config.json"), jsonSerializerSettings);
                 }
-                catch(Newtonsoft.Json.JsonReaderException ex)
+                catch(JsonReaderException ex)
                 {
                     MessageBox.Show("配置文件(config.json)错误，请尝试修改或删除config.json并重启应用\n具体错误：\n" + ex.Message, "配置文件错误");
                     Environment.Exit(1);

@@ -8,10 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LDT_Tools
+namespace LDT_Tools.Utility
 {
-    public static class Utility
-    {
-        
-    }
+	[Serializable]
+	public class DevelopmentException : Exception
+	{
+		public DevelopmentException() { }
+		public DevelopmentException(string message) : base(message) { }
+		public DevelopmentException(string message, Exception inner) : base(message, inner) { }
+		protected DevelopmentException(
+		  System.Runtime.Serialization.SerializationInfo info,
+		  System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+	}
 }

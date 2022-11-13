@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using LDT_Tools.Utility;
+
 namespace LDT_Tools
 {
     /// <summary>
@@ -20,13 +22,12 @@ namespace LDT_Tools
     /// </summary>
     public partial class SettingsPage : Page
     {
-        private List<ComboBoxItem> ComboBoxItems;
         public SettingsPage()
         {
             InitializeComponent();
             for (int i = 0; i < WindowBackgroundType_ComboBox.Items.Count; i++)
             {
-                if ((WindowBackgroundType_ComboBox.Items[i] as ComboBoxItem).Tag.ToString()
+                if ((WindowBackgroundType_ComboBox.Items[i] as ComboBoxItem)?.Tag.ToString()
                     == App.GlobalSettings.BackgroundType.ToString())
                 {
                     //WindowBackgroundType_ComboBox.SelectedIndex = i;
@@ -39,7 +40,12 @@ namespace LDT_Tools
         private void WindowBackgroundType_Selected(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show(WindowBackgroundType_ComboBox.Items.Count.ToString());
-            App.GlobalSettings.BackgroundType = Enum.Parse<Wpf.Ui.Appearance.BackgroundType>((sender as ComboBoxItem).Tag.ToString());
+            string? backgroundTypeString = (sender as ComboBoxItem)?.Tag?.ToString();
+            if (backgroundTypeString == null)
+            {
+                throw new DevelopmentException($"{nameof(backgroundTypeString)} is null");
+            }
+            App.GlobalSettings.BackgroundType = Enum.Parse<Wpf.Ui.Appearance.BackgroundType>(backgroundTypeString);
             //MessageBox.Show(App.GlobalSettings.BackgroundType.ToString());
             Wpf.Ui.Appearance.Background.Apply(App.Current.MainWindow, App.GlobalSettings.BackgroundType);
             //MessageBox.Show(backgroundType.ToString());
@@ -47,8 +53,14 @@ namespace LDT_Tools
 
         private void EnableWindowCornerSwitch_CheckStateChanged(object sender, RoutedEventArgs e)
         {
-            App.GlobalSettings.IsRoundCornerEnabled = (bool)EnableWindowCornerSwitch.IsChecked;
-            (App.Current.MainWindow as MainWindow).MainBorder.CornerRadius = new CornerRadius(App.GlobalSettings.IsRoundCornerEnabled ? 15 : 0);
+            App.GlobalSettings.IsRoundCornerEnabled = EnableWindowCornerSwitch.IsChecked
+                ?? throw new DevelopmentException($"{nameof(EnableWindowCornerSwitch.IsChecked)} is null");
+            if (Application.Current.MainWindow is not MainWindow mainWindow)
+            {
+                throw new DevelopmentException($"{nameof(mainWindow)} is null");
+            }
+            // 感谢Visual Studio 2022教我写C#
+            mainWindow.MainBorder.CornerRadius = new CornerRadius(App.GlobalSettings.IsRoundCornerEnabled ? 15 : 0);
         }
     }
 }

@@ -82,17 +82,19 @@ namespace LDT_Tools
             };
             FormUrlEncodedContent content = new FormUrlEncodedContent(keyValuePairs);
             string json = client.PostAsync(ocrUrl, content).Result.Content.ReadAsStringAsync().Result;
-            var words_result = JsonNode.Parse(json)["words_result"];
+            var words_result = JsonNode.Parse(json)?["words_result"];
             if (words_result == null)
             {
-                return "[File too large!]";
+                return "[File too large]";
             }
-            var words = words_result.AsArray().Reverse().Select(x => x["words"].GetValue<string>());
+            var words = words_result.AsArray().Reverse().Select(x => x?["words"]?.GetValue<string>());
             return string.Join('\n', words);
         }
         static string GetAccessToken()
         {
-            return JsonNode.Parse(client.GetStringAsync(accessTokenUrl).Result)["access_token"].GetValue<string>();
+            string response = client.GetStringAsync(accessTokenUrl).Result;
+            var result = JsonNode.Parse(response)?["access_token"]?.GetValue<string>();
+            return result ?? throw new InvalidDataException($"Invalid AccessToken Result: {result}");
         }
 
         private void ScreenshotButton_Click(object sender, RoutedEventArgs e)
